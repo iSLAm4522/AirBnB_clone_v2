@@ -1,10 +1,20 @@
-<center> <h1>HBNB - The Console</h1> </center>
+# HBNB - AirBnB Clone Project
 
-This repository contains the initial stage of a student project to build a clone of the AirBnB website. This stage implements a backend interface, or console, to manage program data. Console commands allow the user to create, update, and destroy objects, as well as manage file storage. Using a system of JSON serialization/deserialization, storage is persistent between sessions.
+## Overview
+
+This repository contains the initial stage of a student project to build a clone of the AirBnB website. The project is implemented in Python and focuses on creating a robust backend interface through a command-line console.
+
+## Key Features
+
+- Command-line interface for managing application data
+- Object creation, updating, and deletion capabilities
+- Persistent storage using JSON serialization/deserialization
+- Comprehensive unit testing
+- PEP8 compliant code base
 
 ---
 
-<center><h3>Repository Contents by Project Task</h3> </center>
+## Repository Contents by Project Task
 
 | Tasks | Files | Description |
 | ----- | ----- | ------ |
