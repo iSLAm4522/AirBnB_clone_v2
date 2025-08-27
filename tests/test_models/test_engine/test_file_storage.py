@@ -73,8 +73,11 @@ class test_fileStorage(unittest.TestCase):
         """ Load from an empty file """
         with open('file.json', 'w') as f:
             pass
-        with self.assertRaises(ValueError):
+        # Should handle empty file gracefully without raising an exception
+        try:
             storage.reload()
+        except Exception as e:
+            self.fail(f"reload() raised {type(e).__name__} unexpectedly!")
 
     def test_reload_from_nonexistent(self):
         """ Nothing happens if file does not exist """
