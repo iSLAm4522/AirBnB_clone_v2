@@ -37,7 +37,7 @@ class TestConsole(unittest.TestCase):
         output = f.getvalue().strip()
         # Should output just the ID
         self.assertTrue(len(output) == 36)  # UUID length
-        
+
         # Check that object was created with correct attributes
         objects = storage.all()
         found = False
@@ -51,21 +51,21 @@ class TestConsole(unittest.TestCase):
         """ Test create command with multiple parameters """
         with redirect_stdout(io.StringIO()) as f:
             self.console.onecmd('create Place city_id="0001" user_id="0001" '
-                               'name="My_little_house" number_rooms=4 '
-                               'number_bathrooms=2 max_guest=10 '
-                               'price_by_night=300 latitude=37.773972 '
-                               'longitude=-122.431297')
+                                'name="My_little_house" number_rooms=4 '
+                                'number_bathrooms=2 max_guest=10 '
+                                'price_by_night=300 latitude=37.773972 '
+                                'longitude=-122.431297')
         output = f.getvalue().strip()
         # Should output just the ID
         self.assertTrue(len(output) == 36)  # UUID length
-        
+
         # Check that object was created with correct attributes
         objects = storage.all()
         found = False
         for obj in objects.values():
             if (hasattr(obj, 'name') and obj.name == 'My little house' and
-                hasattr(obj, 'number_rooms') and obj.number_rooms == 4 and
-                hasattr(obj, 'latitude') and obj.latitude == 37.773972):
+                    hasattr(obj, 'number_rooms') and obj.number_rooms == 4 and
+                    hasattr(obj, 'latitude') and obj.latitude == 37.773972):
                 found = True
                 break
         self.assertTrue(found)
@@ -114,7 +114,7 @@ class TestConsole(unittest.TestCase):
         with redirect_stdout(io.StringIO()) as f:
             self.console.onecmd('all State')
         output = f.getvalue().strip()
-        
+
         # Output should be a list containing object representations
         self.assertTrue(output.startswith('['))
         self.assertTrue(output.endswith(']'))
@@ -143,7 +143,7 @@ class TestConsole(unittest.TestCase):
         with redirect_stdout(io.StringIO()) as f:
             self.console.onecmd('create State name="TestState"')
         output = f.getvalue().strip()
-        
+
         # Find the created object
         objects = storage.all()
         created_obj = None
@@ -151,7 +151,7 @@ class TestConsole(unittest.TestCase):
             if obj.id == output:
                 created_obj = obj
                 break
-        
+
         self.assertIsNotNone(created_obj)
         self.assertTrue(hasattr(created_obj, 'created_at'))
         self.assertTrue(hasattr(created_obj, 'updated_at'))
