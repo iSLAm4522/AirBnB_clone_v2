@@ -87,3 +87,9 @@ class DBStorage:
             return
         if self.__session is not None:
             self.__session.delete(obj)
+
+    def close(self):
+        """Closes the current database session"""
+        if self.__session is not None:
+            """Call remove() method on the private session attribute"""
+            self.__session.remove()
